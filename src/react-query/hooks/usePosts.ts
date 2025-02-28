@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 interface Post {
-    id: number | undefined;
+    id: number;
     title: string;
     body: string;
-    userId: number;
+    userId: number | undefined;
   }
 
 const usePosts = (userId: number | undefined) => {
@@ -19,7 +19,8 @@ const usePosts = (userId: number | undefined) => {
           .then((res) => res.data);
 
     return useQuery<Post[], Error>({
-        queryKey: ["posts", userId],
+        // users/userId/posts
+        queryKey: userId ? ["users", userId, "posts"] : ["posts"],
         queryFn: () => fetchPosts(userId),
         staleTime: 10_000,
       });
