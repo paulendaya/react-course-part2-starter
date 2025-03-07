@@ -21,6 +21,10 @@ const TodoForm = () => {
 
       // Second Approach: Updating the data in the cache
       queryClient.setQueryData<Todo[]>(['todos'], todos => [savedTodo, ...(todos || [])]) 
+      //clear the ref after the success mutation
+      if (ref.current) {
+        ref.current.value = '';
+      }
 
     }
   });
