@@ -1,52 +1,9 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRef } from "react";
-import { Todo } from "./hooks/useTodos";
-import axios from "axios";
-
-interface AddTodoContext {
-  previousTodos: Todo[];
-}
+import useAddTodos from "./hooks/useAddTodo";
 
 const TodoForm = () => {
-  const queryClient = useQueryClient(); // Access the queryClient
-
-  const addTodo = useMutation<Todo, Error, Todo, AddTodoContext>({
-    mutationFn: (todo: Todo) =>
-      axios
-        .post<Todo>("https://jsonplaceholder.typicode.com/todos", todo)
-        .then((res) => res.data),
-    onMutate: (newTodo: Todo) => {
-      const previousTodos = queryClient.getQueryData<Todo[]>(["todos"]) || [];
-
-      queryClient.setQueryData<Todo[]>(["todos"], (todos) => [
-        newTodo,
-        ...(todos || []),
-      ]);
-      //clear the ref after the success mutation
-      if (ref.current) {
-        ref.current.value = "";
-      }
-
-      return { previousTodos };
-    },
-    onSuccess: (savedTodo, newTodo) => {
-      // console.log(savedTodo)
-
-      // First Approach: invalidating the cache
-      /* queryClient.invalidateQueries({
-        queryKey: ['todos']
-      }) // doesn't work in JSON placeholder */
-
-      // Second Approach: Updating the data in the cache
-      queryClient.setQueryData<Todo[]>(["todos"], (todos) =>
-        todos?.map((todo) => (todo === newTodo ? savedTodo : todo))
-      );
-    },
-    onError: (error, newTodo, context) => {
-      if (!context) return;
-
-      queryClient.setQueryData<Todo[]>(["todos"], context.previousTodos);
-    },
+  const addTodo = useAddTodos(() => {
+    if (ref.current) ref.current.value = "";
   });
   const ref = useRef<HTMLInputElement>(null);
 
@@ -73,9 +30,7 @@ const TodoForm = () => {
           <input ref={ref} type="text" className="form-control" />
         </div>
         <div className="col">
-          <button className="btn btn-primary" disabled={addTodo.isLoading}>
-            {addTodo.isLoading ? "Adding..." : "Add"}
-          </button>
+          <button className="btn btn-primary">Add</button>
         </div>
       </form>
     </>
