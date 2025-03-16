@@ -1,6 +1,6 @@
 // COMPLEX REDUCER
 
-interface Task {
+export interface Task {
   id: number;
   title: string;
 }
@@ -15,7 +15,7 @@ interface DeleteTask {
   id: number;
 }
 
-type TaskAction = AddTask | DeleteTask;
+export type TaskAction = AddTask | DeleteTask;
 // we use type to define the shape of the action
 // type is a way to define the shape of the action, it's main difference from interface is that type supports unions
 // AddTask and DeleteTask are being unioned together, so we can use them in switch statement by using the property type
