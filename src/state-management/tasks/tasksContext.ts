@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { Task, TaskAction } from "../reducers/tasksReducer";
+import { Task, TaskAction } from "./TasksProvider";
 import React from "react";
 
 // The purpose of the context is to share the state between components without doing a prop drilling

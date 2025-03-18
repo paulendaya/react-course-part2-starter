@@ -1,4 +1,10 @@
+import { ReactNode, useReducer } from "react";
+import TasksContext from "./tasksContext";
+
 // COMPLEX REDUCER
+// Reducer is a function that takes in the current state and an action, and returns the new state
+// Reducer purpose is to centralize the logic of how the state changes, so we can keep the state logic in one place
+// To have a separation of concerns - component is for UI, and reducer is for state
 
 export interface Task {
   id: number;
@@ -35,4 +41,17 @@ const tasksReducer = (tasks: Task[], action: TaskAction): Task[] => {
   }
 };
 
-export default tasksReducer;
+interface Props {
+  children: ReactNode;
+}
+
+const TasksProvider = ({ children }: Props) => {
+  const [tasks, dispatch] = useReducer(tasksReducer, []);
+  return (
+    <TasksContext.Provider value={{ tasks, dispatch }}>
+      {children}
+    </TasksContext.Provider>
+  );
+};
+
+export default TasksProvider;
