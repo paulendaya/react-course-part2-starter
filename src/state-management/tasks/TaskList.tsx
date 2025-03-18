@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import useAuth from "../hooks/useAuth";
-import TasksContext from "./tasksContext";
+import { useAuth } from "../auth";
+import useTasks from "./useTasks";
 
-const useTasks = () => useContext(TasksContext);
+//const useTasks = () => useContext(TasksContext);
 // If we are to reuse the hook useTasks in other components, we can have a separate file for it
 // Otherwise, we can have it in the same file as the component for simplicity, like this
 

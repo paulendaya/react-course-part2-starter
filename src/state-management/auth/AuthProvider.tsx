@@ -1,6 +1,26 @@
 import React, { useReducer } from "react";
-import authReducer from "./reducers/authReducer";
-import AuthContext from "./contexts/authContext";
+import AuthContext from "./authContext";
+
+interface LoginAction {
+  type: "LOGIN";
+  username: string;
+}
+
+interface LogoutAction {
+  type: "LOGOUT";
+}
+
+export type AuthAction = LoginAction | LogoutAction;
+
+const authReducer = (user: string, action: AuthAction): string => {
+  switch (action.type) {
+    case "LOGIN":
+      return action.username;
+    case "LOGOUT":
+      return "";
+  }
+};
+
 
 interface Props {
   children: React.ReactNode;

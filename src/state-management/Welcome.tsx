@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import AuthContext from "./contexts/authContext";
+import { useAuth } from "./auth";
 
 const Welcome = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   if (!user) return null;
   return <h3>Welcome, {user}!</h3>;
 };
