@@ -1,10 +1,11 @@
-import { LoginStatus, useAuth } from "./auth";
+import { LoginStatus, useAuth, useAuthStore } from "./auth";
 import { useCounterStore } from "./counter";
 import { useTasks } from "./tasks";
 
 const NavBar = () => {
   const { tasks } = useTasks();
-  const { user } = useAuth();
+  //const { user } = useAuth();
+  const { user } = useAuthStore();
   const { counter } = useCounterStore();
 
   return (

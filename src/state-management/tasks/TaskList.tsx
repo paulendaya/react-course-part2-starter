@@ -1,4 +1,4 @@
-import { useAuth } from "../auth";
+import { useAuth, useAuthStore } from "../auth";
 import useTasks from "./useTasks";
 
 //const useTasks = () => useContext(TasksContext);
@@ -7,7 +7,8 @@ import useTasks from "./useTasks";
 
 const TaskList = () => {
   const { tasks, dispatch } = useTasks();
-  const { user } = useAuth();
+  //const { user } = useAuth();
+  const { user } = useAuthStore();
 
   if (!user) return null;
 
@@ -27,7 +28,7 @@ const TaskList = () => {
       >
         Add Task
       </button>
-      <ul className="list-group">
+      <ul className="list-group mb-5">
         {tasks.map((task) => (
           <li
             key={task.id}

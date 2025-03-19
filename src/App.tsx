@@ -1,6 +1,5 @@
 import "./App.css";
 
-import { AuthProvider } from "./state-management/auth";
 import HomePage from "./state-management/HomePage";
 import NavBar from "./state-management/NavBar";
 import Welcome from "./state-management/Welcome";
@@ -11,13 +10,11 @@ function App() {
   // We wrap our components that need to access the state in a Context Provider
   return (
     <>
-      <AuthProvider>
         <TasksProvider>
           <NavBar />
           <Welcome />
           <HomePage />
         </TasksProvider>
-      </AuthProvider>
       <Counter />
     </>
   );
