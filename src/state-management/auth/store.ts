@@ -16,6 +16,7 @@ const useAuthStore = create<AuthStore>((set) => ({
 if (process.env.NODE_ENV === "development") {
   mountStoreDevtool("Counter Store", useAuthStore);
   //process is a global object that provides information about the current Node.js process
+  // the access to process depends on the @types/node package that needs to be installed
   //NODE_ENV is a constant defined in the current environment, values are "development" or "production"
   //mountStoreDevtool takes the name of the store that we should be able to see in the react dev tools and the store itself
 }
