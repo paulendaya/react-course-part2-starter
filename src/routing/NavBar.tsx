@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -14,14 +14,25 @@ const NavBar = () => {
           <div className="collapse navbar-collapse show" id="navbarNav">
             <ul className="navbar-nav d-flex gap-3 flex-row">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                {/* <Link to="/" className="nav-link">
                   Home
-                </Link>
+                </Link> */}
+                <NavLink to="/" className="nav-link">
+                  Home
+                </NavLink>
+                {/* <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "active nav-link" : " nav-link"
+                  }
+                >
+                  Home
+                </NavLink> //isActive is a boolean that you can use to check if its the current route or not, then a desired active class can be outputted, otherwise, 'active' will automatically be attached */}
               </li>
               <li className="nav-item">
-                <Link to="/users" className="nav-link">
+                <NavLink to="/users" className="nav-link">
                   Users
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

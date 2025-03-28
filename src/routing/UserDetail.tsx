@@ -11,11 +11,11 @@ const UserDetailPage = () => {
   // empty {" "} is to insert a space between the text and the dynamic content
   // When JSX code is rendered, adjacent text elements are concatenated without spaces by default. Therefore, adding {" "} ensures that there is a space between the static text "User" and the dynamically computed content. This is done to improve the readability and presentation of the final output for the user.
   return (
-    <p>
+    <h3>
       User{" "}
       {params.id &&
         users.find((user) => user.id === parseInt(params.id!))?.name}
-    </p>
+    </h3>
   );
 };
 
