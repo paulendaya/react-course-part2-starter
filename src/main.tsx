@@ -10,6 +10,8 @@ import router from "./routing/routes";
 
 const queryClient = new QueryClient();
 
+// RouterProvider is a component that wraps your application and provides routing functionality
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
