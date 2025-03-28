@@ -27,7 +27,7 @@ const NavBar = () => {
                   }
                 >
                   Home
-                </NavLink> //isActive is a boolean that you can use to check if its the current route or not, then a desired active class can be outputted, otherwise, 'active' will automatically be attached */}
+                </NavLink> //isActive inside the function is a boolean that you can use to check if its the current route or not, then a desired active class can be outputted, otherwise, 'active' will automatically be attached */}
               </li>
               <li className="nav-item">
                 <NavLink to="/users" className="nav-link">
