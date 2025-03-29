@@ -5,6 +5,7 @@ import Layout from "./Layout";
 import UserDetail from "./UserDetail";
 import UserPage from "./UserPage";
 import ErrorPage from "./ErrorPage";
+import LoginPage from "./LoginPage";
 
 // In this file, we define the routes for our application
 // by using the createBrowserRouter function from react-router-dom
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       //chilren are the nested routes, they will be rendere inside the parent route within the Outlet component
       { index: true, element: <HomePage /> },
+      { path: "login", element: <LoginPage /> },
       {
         path: "users",
         element: <UserPage />,
